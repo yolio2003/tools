@@ -1,0 +1,9 @@
+#!/bin/sh
+
+printf "\n\n\033[35;1m---------------------- prob output ----------------------\033[0m\n\n"
+
+grep ':key_start:' test_log.*.xml | \
+   sed -e 's/&quot;/"/g' -e 's/&gt;/>/g' -e 's/&lt;/</g'                            \
+   -e ''s/:key_start:\\\(.*\\\):key_end:/$(printf "\033[33m\\\1\033[0m")/''         \
+   -e ''s/:equals:/$(printf "\033[35m=\033[0m")/''                                  \
+   -e ''s/:val_start:\\\(.*\\\):val_end:/$(printf "\033[37m\\\1\033[0m")/''
